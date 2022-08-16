@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component , useEffect} from "react"
 import "./App.css"
 import { MessagesList } from "./containers/MessagesList"
 import { AddMessage } from "./containers/AddMessage"
