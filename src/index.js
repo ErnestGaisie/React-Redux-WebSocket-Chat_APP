@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 import './index.css'
-import registerServiceWorker from './registerServiceWorker'
+import App from './App'
 import chat from './reducers'
 
 const store = createStore(chat)
