@@ -7,10 +7,9 @@ const MessagesList = ({ messages }) => {
 
  return (
     <section id="messages-list">
-    <ul className="flex flex-col space-y-3">
+    <ul className="flex flex-col space-y-3" >
     {messages.map(message => (
       <Message
-      className={message.author.toLowerCase() === 'me' ? 'justify-end' : 'justify-end'}
       key={message.id}
       {...message}
       />
