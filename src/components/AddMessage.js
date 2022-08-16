@@ -5,7 +5,7 @@ const AddMessage = (props) => {
   let input
 
   return (
-    <section id="new-message">
+    <section className="flex space-x-4">
       <input
         onKeyPress={(e) => {
         if (e.key === 'Enter') {
@@ -17,7 +17,9 @@ const AddMessage = (props) => {
         ref={(node) => {
         input = node
       }}
+      className="p-2 w-full rounded-md border border-black"
       />
+      <button className="bg-blue-500 text-white flex items-center justify-center p-2 rounded-md"> Send </button>
     </section>
   )
 }

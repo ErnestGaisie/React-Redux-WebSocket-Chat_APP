@@ -6,7 +6,7 @@ import { AddMessage } from "./containers/AddMessage"
 class App extends Component {
   render() {
     return (
-      <div id="container">
+      <div className="max-w-2xl mx-auto bg-gray-50">
         <section id="main">
           <MessagesList />
           <AddMessage />

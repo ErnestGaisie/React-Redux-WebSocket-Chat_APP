@@ -2,18 +2,22 @@ import React from "react"
 import PropTypes from "prop-types"
 import Message from "./Message"
 
-const MessagesList = ({ messages }) => (
-  <section id="messages-list">
-    <ul>
+const MessagesList = ({ messages }) => {
+  // const mine = author.toLowerCase() === 'me'
+
+ return (
+    <section id="messages-list">
+    <ul className="flex flex-col space-y-3">
     {messages.map(message => (
       <Message
+      className={message.author.toLowerCase() === 'me' ? 'justify-end' : 'justify-end'}
       key={message.id}
       {...message}
       />
     ))}
     </ul>
-  </section>
-)
+  </section>)
+}
 
 MessagesList.propTypes = {
   messages: PropTypes.arrayOf(
