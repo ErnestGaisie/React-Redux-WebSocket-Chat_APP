@@ -9,7 +9,9 @@ const AddMessage = (props) => {
       <input
         onKeyPress={(e) => {
         if (e.key === 'Enter') {
-          props.dispatch(input.value, 'Me')
+          if (input.value || input.value.trim()){
+            props.dispatch(input.value, 'Me')
+          }
           input.value = ''
         }
       }}
@@ -19,7 +21,13 @@ const AddMessage = (props) => {
       }}
       className="p-2 w-full rounded-md border border-black"
       />
-      <button className="bg-blue-500 text-white flex items-center justify-center p-2 rounded-md"> Send </button>
+      <button className="bg-blue-500 text-white flex items-center justify-center p-2 rounded-md" onClick={()=> {
+        if (input.value || input.value.trim()){
+          props.dispatch(input.value, 'Me')
+        }
+        
+        input.value = ''
+      }} > Send </button>
     </section>
   )
 }

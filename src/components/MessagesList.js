@@ -7,7 +7,7 @@ const MessagesList = ({ messages }) => {
 
  return (
     <section id="messages-list">
-    <ul className="flex flex-col space-y-3" >
+    <ul className="flex flex-col space-y-3 py-4" >
     {messages.map(message => (
       <Message
       key={message.id}
