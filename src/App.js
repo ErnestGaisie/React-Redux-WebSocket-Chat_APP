@@ -1,17 +1,19 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from "react"
+import "./App.css"
+import { MessagesList } from "./containers/MessagesList"
+import { AddMessage } from "./containers/AddMessage"
 
 class App extends Component {
   render() {
     return (
       <div id="container">
         <section id="main">
-          <section id="messages-list">Messages list</section>
-          <section id="new-message">New message</section>
+          <MessagesList />
+          <AddMessage />
         </section>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
