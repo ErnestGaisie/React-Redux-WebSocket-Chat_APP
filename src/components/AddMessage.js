@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import ModalForm from "../components/Modal";
+import { useDispatch } from "react-redux";
+import { addMessage } from '../actions'
 
-const AddMessage = (props) => {
+const AddMessage = ({username}) => {
   let input;
+  const dispatch = useDispatch();
 
   return (
     <section className="flex space-x-4">
@@ -10,7 +14,8 @@ const AddMessage = (props) => {
         onKeyPress={(e) => {
           if (e.key === "Enter") {
             if (input.value || input.value.trim()) {
-              props.dispatch(input.value, "Me");
+              dispatch(addMessage(input.value, username));
+              
             }
             input.value = "";
           }
@@ -25,16 +30,19 @@ const AddMessage = (props) => {
         className="bg-blue-500 text-white flex items-center justify-center p-2 rounded-md"
         onClick={() => {
           if (input.value || input.value.trim()) {
-            props.dispatch(input.value, "Me");
-            const messages = JSON.parse(localStorage.getItem("messages")) || [];
-            localStorage.setItem("messages", JSON.stringify([
-              ...messages,
-              {
-                message: input.value,
-                author: "Me",
-                id: 0,
-              },
-            ]));
+            dispatch(addMessage(input.value, username));
+            // const messages = JSON.parse(localStorage.getItem("messages")) || [];
+            // localStorage.setItem(
+            //   "messages",
+            //   JSON.stringify([
+            //     ...messages,
+            //     {
+            //       message: input.value,
+            //       author: "Me",
+            //       id: 0,
+            //     },
+            //   ])
+            // );
           }
 
           input.value = "";
