@@ -27,3 +27,10 @@ export const populateUsersList = users => ({
   type: types.USERS_LIST,
   users
 })
+
+export const userLogin = userName => {
+  return {
+    type: "USER_LOGGED_IN",
+    userName
+  };
+};

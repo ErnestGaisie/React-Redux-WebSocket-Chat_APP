@@ -1,13 +1,16 @@
 import React, { Component, useEffect, useState } from "react";
 import "./App.css";
-import { MessagesList } from "./containers/MessagesList";
+import MessagesList  from "./components/MessagesList";
 import  AddMessage  from "./components/AddMessage";
 import setupSocket from './sockets'
 import handleNewMessage from './sagas'
 import ModalForm from "./components/Modal";
+import { userLogin } from "./actions";
+import { useDispatch } from "react-redux";
 
 
 const App = ({store, sagaMiddleware}) =>  {
+  const dispatch = useDispatch()
   const [isModalVisible, setIsModalVisible] = useState(true);
   const [username, setUserName] = useState("Me");
   const toggleModal = () => {
@@ -17,12 +20,14 @@ const App = ({store, sagaMiddleware}) =>  {
   const openModal = () => {setIsModalVisible(true)};
   const closeModal = () => {setIsModalVisible(false)};
   const handleSubmit = (name) => {
-    console.log("USERNAME", name);
+    localStorage.setItem("username", name);
     setUserName(name);
+    dispatch(userLogin(username));
   }
 
   useEffect(() => {
     openModal()
+    
   }, [])
 
   // useEffect(() => {
@@ -45,7 +50,7 @@ const App = ({store, sagaMiddleware}) =>  {
           : 
           null 
         }
-          <MessagesList />
+          <MessagesList username={username} />
           <AddMessage username={username}/>
         </section>
       </div>

@@ -2,9 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Message from "./Message";
 import PullToRefresh from "react-simple-pull-to-refresh";
+import { useSelector } from "react-redux";
 
-const MessagesList = ({ messages }) => {
+const MessagesList = ({ username }) => {
   // const mine = author.toLowerCase() === 'me'
+
+  const messages = useSelector((state) => state.messages);
 
   return (
     <section id="messages-list">
@@ -12,7 +15,7 @@ const MessagesList = ({ messages }) => {
       <PullToRefresh>
         <ul className="flex flex-col space-y-3 py-4">
           {messages.map((message) => (
-            <Message key={message.id} {...message} />
+            <Message username={username} key={message.id} {...message} />
           ))}
         </ul>
       </PullToRefresh>

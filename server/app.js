@@ -14,6 +14,7 @@ const broadcast = (data, ws) => {
 
 wss.on('connection', (ws) => {
   let index
+  console.log(users);
   ws.on('message', (message) => {
     const data = JSON.parse(message)
     switch (data.type) {
